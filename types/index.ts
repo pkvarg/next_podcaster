@@ -105,12 +105,12 @@ export interface AudioContextType {
   setAudio: React.Dispatch<React.SetStateAction<AudioProps | undefined>>
 }
 
-// export interface PodcastCardProps {
-//   imgUrl: string
-//   title: string
-//   description: string
-//   podcastId: Id<'podcasts'>
-// }
+export interface PodcastCardProps {
+  imgUrl: string
+  title: string
+  description: string
+  podcastId: number
+}
 
 // export interface CarouselProps {
 //   fansLikeDetail: TopPodcastersProps[]

@@ -2,7 +2,7 @@
 
 import { sidebarLinks } from '@/constants'
 import { cn } from '@/lib/utils'
-//import { SignedIn, SignedOut, useClerk } from '@clerk/nextjs'
+import { SignedIn, SignedOut, useClerk } from '@clerk/nextjs'
 import Image from 'next/image'
 import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
@@ -13,7 +13,7 @@ import { useAudio } from '@/providers/AudioProvider'
 const LeftSidebar = () => {
   const pathname = usePathname()
   const router = useRouter()
-  //const { signOut } = useClerk()
+  const { signOut } = useClerk()
   const { audio } = useAudio()
 
   return (
@@ -54,7 +54,7 @@ const LeftSidebar = () => {
           )
         })}
       </nav>
-      {/* <SignedOut>
+      <SignedOut>
         <div className='flex-center w-full pb-14 max-lg:px-4 lg:pr-8'>
           <Button asChild className='text-16 w-full bg-orange-1 font-extrabold'>
             <Link href='/sign-in'>Sign in</Link>
@@ -65,12 +65,12 @@ const LeftSidebar = () => {
         <div className='flex-center w-full pb-14 max-lg:px-4 lg:pr-8'>
           <Button
             className='text-16 w-full bg-orange-1 font-extrabold'
-            // onClick={() => signOut(() => router.push('/'))}
+            onClick={() => signOut(() => router.push('/'))}
           >
             Log Out
           </Button>
         </div>
-      </SignedIn> */}
+      </SignedIn>
     </section>
   )
 }
