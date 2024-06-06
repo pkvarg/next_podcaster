@@ -15,6 +15,11 @@ const nextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'quaint-goat-395.convex.cloud',
+      },
+
+      {
+        protocol: 'https',
         hostname: 'img.clerk.com',
       },
     ],
