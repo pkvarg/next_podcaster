@@ -17,6 +17,10 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'quaint-goat-395.convex.cloud',
       },
+      {
+        protocol: 'https',
+        hostname: 'awaited-bear-69.convex.cloud',
+      },
 
       {
         protocol: 'https',
