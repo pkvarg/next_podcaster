@@ -26,18 +26,25 @@ export const generateAudioAction = action({
 export const generateThumbnailAction = action({
   args: { prompt: v.string() },
   handler: async (_, { prompt }) => {
-    const response = await openai.images.generate({
-      model: 'dall-e-3',
-      prompt,
-      size: '1024x1024',
-      quality: 'standard',
-      n: 1,
-    })
+    let url: any
+    try {
+      const response = await openai.images.generate({
+        //model: 'dall-e-3',
+        model: 'whisper-1',
+        prompt,
+        size: '1024x1024',
+        quality: 'standard',
+        n: 1,
+      })
 
-    const url = response.data[0].url
+      url = response.data[0].url
+    } catch (error) {
+      console.log('imgeer', error)
+    }
 
     if (!url) {
-      throw new Error('Error generating thumbnail')
+      console.log('imgeer2')
+      //throw new Error('Error generating thumbnail')
     }
 
     const imageResponse = await fetch(url)

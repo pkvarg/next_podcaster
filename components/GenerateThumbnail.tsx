@@ -12,6 +12,7 @@ import { useAction, useMutation } from 'convex/react'
 import { useUploadFiles } from '@xixixao/uploadstuff/react'
 import { api } from '@/convex/_generated/api'
 import { v4 as uuidv4 } from 'uuid'
+import { log } from 'console'
 
 const GenerateThumbnail = ({
   setImage,
@@ -30,12 +31,13 @@ const GenerateThumbnail = ({
   const handleGenerateThumbnail = useAction(api.openai.generateThumbnailAction)
 
   const handleImage = async (blob: Blob, fileName: string) => {
+    console.log('HI', blob, fileName)
     setIsImageLoading(true)
     setImage('')
 
     try {
       const file = new File([blob], fileName, { type: 'image/png' })
-
+      console.log('Gthu File', file)
       const uploaded = await startUpload([file])
       const storageId = (uploaded[0].response as any).storageId
 
@@ -56,10 +58,12 @@ const GenerateThumbnail = ({
   const generateImage = async () => {
     try {
       const response = await handleGenerateThumbnail({ prompt: imagePrompt })
+      console.log('r', response)
       const blob = new Blob([response], { type: 'image/png' })
+      console.log('b', blob)
       handleImage(blob, `thumbnail-${uuidv4()}`)
     } catch (error) {
-      console.log(error)
+      console.log('GI', error)
       toast({ title: 'Error generating thumbnail', variant: 'destructive' })
     }
   }
