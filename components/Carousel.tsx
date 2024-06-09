@@ -56,7 +56,7 @@ const EmblaCarousel = ({ fansLikeDetail }: CarouselProps) => {
               fill
               className='absolute size-full rounded-xl border-none'
             />
-            <div className='glassmorphism-black relative z-10 flex flex-col rounded-b-xl p-4'>
+            <div className='bg-[#D3D3D340] relative z-10 flex flex-col rounded-b-xl p-4'>
               <h2 className='text-14 font-semibold text-white-1'>
                 {item.podcast[0]?.podcastTitle}
               </h2>
